@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Contatos</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+
+    const rootElement = document.getElementById("root");
+
+    const App = ({ children }) => (
+      <div className="min-h-full">{children}</div>
+    );
+
+    const Card = ({ nome, cargo, imagem }) => {
+      return (
+        <div className="container-card">
+          <div className="info">
+            <img
+              src={imagem}
+              width={50}
+            />
+            <ul>
+              <li className="nome">{nome}</li>
+              <li className="cargo">{cargo}</li>
+            </ul>
+          </div>
+          <div className="acoes">
+            <button className="botao-card">call</button>
+            <button className="botao-card">send e-mail</button>
+          </div>
+        </div>
+      );
+    };
+
+    const Home = () => {
+      return (
+        <div className="container">
+          <div className="header">
+            <span>
+              <strong>CONTACTS</strong>
+            </span>
+            <button className="botao">
+              <strong>Search</strong>
+            </button>
+          </div>
+          <div>
+            <Card nome="Tom James" cargo="Programmer" imagem='./imagens/Avatar2.jpg' />
+            <Card nome="Alessa Smith" cargo="Manager" imagem='./imagens/Avatar1.jpg' />
+            <Card nome="Kate Minard" cargo="Web Designer" imagem='./imagens/Avatar4.jpg' />
+            <Card nome="John Tudor" cargo="Database Admin" imagem='./imagens/Avatar5.jpg' />
+          </div>
+          <span className="comentario">
+            <strong>We found 23 contacts</strong>
+          </span>
+        </div>
+      );
+    };
+
+
+    const element = (
+      <App>
+        <Home />
+      </App>
+    );
+
+    ReactDOM.render(element, rootElement);
+  </script>
+</body>
+
+</html>
